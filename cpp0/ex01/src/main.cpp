@@ -6,13 +6,21 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:48:49 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/05 20:28:55 by adouay           ###   ########.fr       */
+/*   Updated: 2023/04/09 18:19:12 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "../include/PhoneBook.hpp"
-#include "../include/Contact.hpp"
+#include "../include/phonebook.h"
+
+std::string	TroncString(std::string str)
+{
+	std::string	result;
+	
+	result = str.substr(0,10);
+	if (str.size() > 10)
+		result[9] = '.';
+	return result;
+}
 
 int	main(void)
 {
@@ -23,11 +31,10 @@ int	main(void)
 	while (cmd.compare("EXIT") != 0)
 	{
 		if (cmd.compare("SEARCH") == 0)
-			PhoneBook.search();
+			PhoneBook.SearchContact();
 		if (cmd.compare("ADD") == 0)
-			PhoneBook.add();
+			PhoneBook.AddContact();
 		std::cin >> cmd;
 	}
-	PhoneBook.exit();
 	return(0);
 }

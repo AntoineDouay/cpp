@@ -36,7 +36,7 @@ OBJ_DIR = obj/
 #                                   SOURCES                                    #
 #==============================================================================#
 
-SRC = main.cpp PhoneBook.cpp Class.cpp\
+SRC = main.cpp PhoneBook.cpp Contact.cpp\
 
 #==============================================================================#
 #                                   HEADERS                                    #

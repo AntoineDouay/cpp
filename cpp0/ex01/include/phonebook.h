@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Class.cpp                                          :+:      :+:    :+:   */
+/*   phonebook.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 19:28:21 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/05 20:27:17 by adouay           ###   ########.fr       */
+/*   Created: 2023/04/09 17:55:59 by adouay            #+#    #+#             */
+/*   Updated: 2023/04/09 18:32:52 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PHONEBOOK_H
+
+# define PHONEBOOK_H
+
 #include <iostream>
-#include "../include/Contact.hpp"
+#include <string>
+#include <iomanip>
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
-Contact::Contact(void)
-{
-	//std::cout << "class Constructor Called" << std::endl;
-	return ;
-}
+std::string	TroncString(std::string str);
 
-Contact::~Contact(void)
-{
-	//std::cout << "class Destructor Called" << std::endl;
-	return ;
-}
+# endif

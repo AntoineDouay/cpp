@@ -6,37 +6,65 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:29:28 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/05 20:27:04 by adouay           ###   ########.fr       */
+/*   Updated: 2023/04/09 18:49:57 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "../include/PhoneBook.hpp"
+#include "../include/phonebook.h"
 
-PhoneBook::PhoneBook(void){
-	//std::cout << "Constructor called" << std::endl;
-	return ;
-}
-
-PhoneBook::~PhoneBook(void){
-	//std::cout << "Destructor called" << std::endl;
-	return ;
-}
-
-void	PhoneBook::add(void)
+PhoneBook::PhoneBook() : _contact_nbr(0)
 {
-	std::cout << "add called" << std::endl;
+}
+
+void	PhoneBook::AddContact()
+{
+	Contact	contact;
+	const int	max = 8;
+	
+	contact.SetValues();
+	if (_contact_nbr < max)
+	{
+		_contact[_contact_nbr] = contact;
+		_contact_nbr++;
+	}
+	else
+	{
+		for(int i(0); i < max - 1; i++)
+			_contact[i] = _contact[i + 1];
+		_contact[max - 1] = contact;
+	}
 	return ;
 }
 
-void	PhoneBook::search(void)
+void	PhoneBook::SearchContact()
 {
-	std::cout << "search called" << std::endl;
+	std::string	index;
+	
+	DisplayPhoneBook();
+	std::cout << "What Contact your looking for ?" << '\n';
+	std::cin >> index;
+	while (index.size() != 1 || (index[0] - '0' < 1  || index[0] - '0' > _contact_nbr))
+	{
+		std::cout << "Need a valid index" << '\n';
+		std::cin >> index;
+	}
+	_contact[index[0] - '0' - 1].Display();
 	return ;
 }
 
-void	PhoneBook::exit(void)
+void	PhoneBook::DisplayPhoneBook()
 {
-	std::cout << "exit called" << std::endl;
-	return ;
+	std::string	str;
+	
+	std::cout << "=============================================" << '\n';
+	std::cout << "=                 PhoneBook                 =" << '\n';
+	std::cout << "=============================================" << "\n";
+	for(int i(0); i < _contact_nbr; i++)
+	{
+		std::cout << '|' << std::setw(10) << i + 1 << "|";
+		std::cout << std::setw(10) << TroncString(_contact[i].GetFirstName()) << "|";
+		std::cout << std::setw(10) << TroncString(_contact[i].GetLastName()) << "|";
+		std::cout << std::setw(10) << TroncString(_contact[i].GetNickName()) << '|' << '\n';
+		std::cout << "---------------------------------------------" << '\n';
+	}
 }
