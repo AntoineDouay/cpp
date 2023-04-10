@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.h                                        :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/09 17:55:59 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/10 16:52:09 by adouay           ###   ########.fr       */
+/*   Created: 2023/04/10 19:12:18 by adouay            #+#    #+#             */
+/*   Updated: 2023/04/10 19:21:04 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
+#include "../include/Zombie.hpp"
 
-# define PHONEBOOK_H
+Zombie::Zombie( std::string name) : _name(name)
+{
+}
 
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
+Zombie::~Zombie( void )
+{
+	std::cout << _name << " has been killed a second time " << '\n';
+}
 
-std::string	TroncString(std::string str);
-
-# endif
+void	Zombie::announce() const
+{
+	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	return;
+}

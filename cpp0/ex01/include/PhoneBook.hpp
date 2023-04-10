@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:37:43 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/09 18:17:43 by adouay           ###   ########.fr       */
+/*   Updated: 2023/04/10 16:50:20 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 # define PHONEBOOK_HPP
 
 #include "Contact.hpp"
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include "Contact.hpp"
+
+std::string	TroncString(std::string str);
 
 class PhoneBook {
 	
@@ -30,7 +36,7 @@ class PhoneBook {
 	Contact _contact[8];
 	int		_contact_nbr;
 	
-	void	DisplayPhoneBook();
+	void	DisplayPhoneBook() const;
 };
 
 #endif

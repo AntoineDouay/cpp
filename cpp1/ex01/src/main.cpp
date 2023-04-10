@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.h                                        :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/09 17:55:59 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/10 16:52:09 by adouay           ###   ########.fr       */
+/*   Created: 2023/04/10 19:48:39 by adouay            #+#    #+#             */
+/*   Updated: 2023/04/10 20:22:36 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
+#include "../include/Zombie.hpp"
 
-# define PHONEBOOK_H
+Zombie* zombieHorde( int N, std::string name );
 
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
+int	main ( void )
+{
+	Zombie *horde = zombieHorde(4, "SAM");
 
-std::string	TroncString(std::string str);
-
-# endif
+	for (int i(0); i < 4; i++)
+	{
+		std::cout << "Zombie " << i << ": ";
+		horde[i].announce();
+	}	
+	delete [] horde;
+	return 0;
+}

@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.h                                        :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/09 17:55:59 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/10 16:52:09 by adouay           ###   ########.fr       */
+/*   Created: 2023/04/10 19:04:54 by adouay            #+#    #+#             */
+/*   Updated: 2023/04/10 19:23:40 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
+#include "../include/Zombie.hpp"
 
-# define PHONEBOOK_H
-
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
-
-std::string	TroncString(std::string str);
-
-# endif
+void randomChump( std::string name )
+{
+	Zombie x(name);
+	
+	x.announce();
+	return ;
+}

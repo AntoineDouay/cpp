@@ -6,11 +6,11 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:29:28 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/09 18:49:57 by adouay           ###   ########.fr       */
+/*   Updated: 2023/04/10 16:26:07 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/phonebook.h"
+#include "../include/PhoneBook.hpp"
 
 PhoneBook::PhoneBook() : _contact_nbr(0)
 {
@@ -52,7 +52,7 @@ void	PhoneBook::SearchContact()
 	return ;
 }
 
-void	PhoneBook::DisplayPhoneBook()
+void	PhoneBook::DisplayPhoneBook() const
 {
 	std::string	str;
 	
