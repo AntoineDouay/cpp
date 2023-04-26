@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:34:33 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/11 18:01:47 by adouay           ###   ########.fr       */
+/*   Updated: 2023/04/21 17:58:34 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ class Weapon {
 	
 	private :
 	
-	std::string _type;
+	std::string 		_type;
+	
 };
 
 #endif

@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 18:04:49 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/26 15:26:12 by adouay           ###   ########.fr       */
+/*   Created: 2023/04/21 17:06:49 by adouay            #+#    #+#             */
+/*   Updated: 2023/04/21 17:08:11 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Harl.hpp"
+#ifndef ZOMBIE_H
 
-int main( void )
-{
-	Harl	harl;
+# define ZOMBIE_H
 
-	std::cout << "[DEBUG]" << std::endl;
-	harl.complain("DEBUG");
+#include "Zombie.hpp"
 
-	std::cout << "[INFO]" << std::endl;
-	harl.complain("INFO");
+Zombie* newZombie( std::string name );
+void	randomChump( std::string name );
 
-	std::cout << "[WARNING]" << std::endl;
-	harl.complain("WARNING");
-
-	std::cout << "[ERROR]" << std::endl;
-	harl.complain("ERROR");
-
-	return (0);
-}
+#endif

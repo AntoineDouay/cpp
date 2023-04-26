@@ -6,7 +6,7 @@
 #    By: adouay <adouay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 15:50:51 by adouay            #+#    #+#              #
-#    Updated: 2023/04/11 15:50:52 by adouay           ###   ########.fr        #
+#    Updated: 2023/04/21 17:13:22 by adouay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ SRC = main.cpp zombieHorde.cpp Zombie.cpp \
 #                                   HEADERS                                    #
 #==============================================================================#
 
-HEAD = $(addprefix $(HEADER_DIR), Zombie.hpp) \
+HEAD = $(addprefix $(HEADER_DIR), Zombie.hpp Zombie.h) \
 
 #==============================================================================#
 #                                   OBJECTS                                    #

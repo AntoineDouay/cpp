@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:36:14 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/13 17:29:02 by adouay           ###   ########.fr       */
+/*   Updated: 2023/04/21 18:17:59 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ int	main(int ac, char *av[])
 	
 	file.open(av[1]);
 
-	if (!file.is_open())
+	if (!file.good())
 	{
 		std::cout << "Error from file" << std::endl;
 		return 0;
 	}
 	newFile.open(replaceName.c_str());
-	if (!newFile.is_open())
+	if (!newFile.good())
 	{
 		file.close();
 		return 0;

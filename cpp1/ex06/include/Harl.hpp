@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 18:04:49 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/26 15:26:12 by adouay           ###   ########.fr       */
+/*   Created: 2023/04/13 18:05:20 by adouay            #+#    #+#             */
+/*   Updated: 2023/04/13 18:53:18 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Harl.hpp"
+#ifndef HARL_HPP
 
-int main( void )
-{
-	Harl	harl;
+# define HARL_HPP
 
-	std::cout << "[DEBUG]" << std::endl;
-	harl.complain("DEBUG");
+#include <iostream>
+#include <string>
 
-	std::cout << "[INFO]" << std::endl;
-	harl.complain("INFO");
+class Harl {
 
-	std::cout << "[WARNING]" << std::endl;
-	harl.complain("WARNING");
+	public :
 
-	std::cout << "[ERROR]" << std::endl;
-	harl.complain("ERROR");
+	Harl();
+	void complain( std::string level );
 
-	return (0);
-}
+	private :
+
+	void debug( void );
+	void info( void );
+	void warning( void );
+	void error( void );
+	
+	void	(Harl::*_array[4])();
+};
+
+#endif

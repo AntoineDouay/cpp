@@ -5,31 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 16:25:14 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/21 17:58:26 by adouay           ###   ########.fr       */
+/*   Created: 2023/04/13 18:04:49 by adouay            #+#    #+#             */
+/*   Updated: 2023/04/26 15:23:06 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/HumanA.hpp"
-#include "../include/HumanB.hpp"
-#include "../include/Weapon.hpp"
+#include "../include/Harl.hpp"
 
-int main()
+int main( int ac, char* av[] )
 {
+	Harl	harl;
+
+	if (ac != 2)
 	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
+		std::cout << "need one argument" << std::endl;
+		return 0;
 	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
+
+	harl.complain(av[1]);
+
 	return 0;
 }
