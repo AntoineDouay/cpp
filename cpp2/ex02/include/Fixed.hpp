@@ -29,7 +29,32 @@ class Fixed {
 	~Fixed( void );
 	
 	Fixed&	operator=(Fixed const &src);
+
+	bool	operator==( Fixed const &src ) const;
+	bool	operator!=( Fixed const &src ) const;
+	bool	operator<( Fixed const &src ) const;
+	bool	operator<=( Fixed const &src ) const;
+	bool	operator>( Fixed const &src ) const;
+	bool	operator>=( Fixed const &src ) const;
 	
+	Fixed		operator+( Fixed const &src );
+	Fixed		operator-( Fixed const &src );
+	Fixed		operator*( Fixed const &src );
+	Fixed		operator/( Fixed const &src );
+
+	Fixed&	operator++( void );
+	Fixed	operator++( int );
+
+	Fixed&	operator--( void );
+	Fixed	operator--( int );
+
+	static Fixed	min( Fixed& left, Fixed& right );
+	static Fixed	max( Fixed& left, Fixed& right );
+
+	static Fixed	min( const Fixed& left, const Fixed& right );
+	static Fixed	max( const Fixed& left, const Fixed& right );
+	
+
 	int			getRawBits ( void ) const;
 	void		setRawBits ( int const raw );
 	

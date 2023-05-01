@@ -28,6 +28,9 @@ Fixed::Fixed( const float n )
 {
 	std::cout << "float Constructor Called\n";
 	_value = (int) roundf(n * (1 << _BITS));
+	std::cout << _value << std::endl;
+	std::cout << (float)(1 << _BITS) << std::endl;
+	
 	return ;
 }
 
@@ -73,5 +76,9 @@ float		Fixed::toFloat( void ) const
 	return (float)_value / (float)(1 << _BITS);
 }
 
-
+std::ostream&	operator<<( std::ostream& stream, Fixed const &src )
+{
+	stream << src.toFloat();
+	return stream;
+}
 
