@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/15 18:05:05 by adouay            #+#    #+#             */
+/*   Updated: 2023/05/15 18:16:32 by adouay           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../include/ClapTrap.hpp"
 
-ClapTrap::ClapTrap( void ) : _hp(10), _energy_point(10), _atk_dmg(0)
+ClapTrap::ClapTrap( void ) : _hp(100), _energy_point(50), _atk_dmg(20)
 {
     std::cout << "Constructor called\n";
 }
@@ -10,9 +21,9 @@ ClapTrap::ClapTrap ( const std::string name )
 {
     std::cout << "Constructor with name called\n";
     _name = name;
-    _hp = 10;
-    _energy_point = 10;
-    _atk_dmg = 0;
+    _hp = 100;
+    _energy_point = 50;
+    _atk_dmg = 20;
     return ;
 }
 
