@@ -21,9 +21,9 @@ ClapTrap::ClapTrap ( const std::string name )
 {
     std::cout << "Constructor with name called\n";
     _name = name;
-    _hp = 100;
-    _energy_point = 50;
-    _atk_dmg = 20;
+    _hp = 10;
+    _energy_point = 5;
+    _atk_dmg = 0;
     return ;
 }
 
