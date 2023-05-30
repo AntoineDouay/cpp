@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:05:13 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/15 18:05:15 by adouay           ###   ########.fr       */
+/*   Updated: 2023/05/30 17:08:53 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,35 @@ ScavTrap&   ScavTrap::operator=( ScavTrap const & src)
     return *this;
 }
 
+void	ScavTrap::attack ( const std::string & src )
+{
+	if (_energy_point <= 0)
+	{
+		std::cout << "ScavTrap " << this->_name << " has no energy left\n";
+		return;
+	}
+	if (_hp <= 0)
+	{
+		std::cout <<  "ScavTrap " << this->_name << " is dead\n";
+		return;
+	}
+	_energy_point--;
+	std::cout << "ScavTrap " << _name << " attack by " << _atk_dmg << " hp " << src << std::endl;
+}
+
 void    ScavTrap::guardGate()
 {
-    std::cout << _name << " goes into guardGate mode \n";
+	if (_energy_point <= 0)
+	{
+		std::cout << "ScavTrap " << this->_name << " has no energy left\n";
+		return ;
+	}
+	if (_hp <= 0)
+	{
+		std::cout  << "ScavTrap " << this->_name << " is dead\n";
+		return;
+	}
+    std::cout << "ScavTrap " << _name << " goes into guardGate mode \n";
     return ;
 }
 

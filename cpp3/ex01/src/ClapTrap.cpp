@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:05:05 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/15 18:16:32 by adouay           ###   ########.fr       */
+/*   Updated: 2023/05/30 17:06:54 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void    ClapTrap::beRepaired( unsigned int amount )
 	if (_energy_point <= 0)
 	{
 		std::cout << this->_name << " has no energy left\n";
+		return ;
 	}
 	if (_hp <= 0)
 	{

@@ -41,8 +41,24 @@ FragTrap&   FragTrap::operator=( FragTrap const & src)
     return *this;
 }
 
+void	FragTrap::attack( const std::string & src )
+{
+	if (_energy_point <= 0)
+	{
+		std::cout << "FragTrap " << this->_name << " has no energy left\n";
+		return;
+	}
+	if (_hp <= 0)
+	{
+		std::cout <<  "FragTrap " << this->_name << " is dead\n";
+		return;
+	}
+	_energy_point--;
+	std::cout << "FragTrap " << _name << " attack by " << _atk_dmg << " hp " << src << std::endl;
+}
+
 void    FragTrap::highFivesGuys()
 {
-    std::cout << _name << " give me a Highfive !!\n";
+    std::cout << "FragTrap " << _name << " give me a Highfive !!\n";
 }
 
