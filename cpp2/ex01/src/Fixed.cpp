@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 18:34:16 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/26 20:24:36 by adouay           ###   ########.fr       */
+/*   Updated: 2023/06/25 21:12:19 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ Fixed::Fixed( const float n )
 {
 	std::cout << "float Constructor Called\n";
 	_value = (int) roundf(n * (1 << _BITS));
-	std::cout << _value << std::endl;
-	std::cout << (float)(1 << _BITS) << std::endl;
+	//std::cout << _value << std::endl;
 	
 	return ;
 }
@@ -56,7 +55,6 @@ Fixed&	Fixed::operator=(Fixed const &src)
 
 int	Fixed::getRawBits ( void ) const
 {
-	std::cout << "getRawBits member function called\n";
 	return (_value);
 }
 

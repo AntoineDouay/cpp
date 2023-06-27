@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 18:14:27 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/26 19:49:25 by adouay           ###   ########.fr       */
+/*   Updated: 2023/06/27 14:00:31 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ class Fixed {
 	static Fixed	min( const Fixed& left, const Fixed& right );
 	static Fixed	max( const Fixed& left, const Fixed& right );
 	
-
 	int			getRawBits ( void ) const;
 	void		setRawBits ( int const raw );
 	

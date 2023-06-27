@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 18:34:16 by adouay            #+#    #+#             */
-/*   Updated: 2023/04/26 20:24:36 by adouay           ###   ########.fr       */
+/*   Updated: 2023/06/27 13:50:34 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ Fixed::Fixed( const int n ) : _value(n << _BITS)
 Fixed::Fixed( const float n )
 {
 	_value = (int) roundf(n * (1 << _BITS));
-	// std::cout << _value << std::endl;
-	// std::cout << (float)(1 << _BITS) << std::endl;
+	std::cout << _value << std::endl;
+	std::cout << (float)(1 << _BITS) << std::endl;
 	return ;
 }
 
