@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:34:48 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/29 18:24:26 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/04 17:18:53 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ const WrongAnimal* tang = new WrongCat();
 const Animal* meta = new Animal();
 const Animal* i = new Cat();
 const Animal* j = new Dog();
+
 std::cout << tang->getType() << " " << std::endl;
 std::cout << j->getType() << " " << std::endl;
 std::cout << i->getType() << " " << std::endl;
@@ -40,10 +41,10 @@ i->makeSound();
 j->makeSound();
 meta->makeSound();
 
-
 delete tang;
 delete meta;
 delete j;
 delete i;
+
 return 0;
 }

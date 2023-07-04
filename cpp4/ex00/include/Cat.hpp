@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:34:44 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/29 18:14:27 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/04 17:17:16 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Cat : public Animal{
 	~Cat ( void );
 
 	Cat&	operator=( Cat const & src );
+	
 	void makeSound( void ) const;
 
 };

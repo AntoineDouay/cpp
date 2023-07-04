@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/04 14:13:50 by adouay            #+#    #+#             */
+/*   Updated: 2023/07/04 14:16:03 by adouay           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/ScavTrap.hpp"
 #include "../include/FragTrap.hpp"
 #include "../include/DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap()
 {
     _hp = 100;
     _energy_point = 50;
@@ -11,7 +23,7 @@ DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
     return ;
 }
 
-DiamondTrap::DiamondTrap( const std::string name ) : ClapTrap( name + "_clap_name")/*, ScavTrap( name ), FragTrap( name )*/
+DiamondTrap::DiamondTrap( const std::string name ) : ClapTrap( name + "_clap_name"), ScavTrap( name ), FragTrap( name )
 {
     _name = name;
     _hp = 100;

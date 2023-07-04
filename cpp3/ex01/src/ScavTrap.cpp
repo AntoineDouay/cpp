@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:05:13 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/30 17:08:53 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/04 16:08:41 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ ScavTrap::ScavTrap( const std::string name ) : ClapTrap( name )
 
 ScavTrap::ScavTrap( ScavTrap const & src) : ClapTrap( src )
 {
-    *this = src;
     std::cout << "ScavTrap copy constructor called\n";
     return ;
 }
@@ -54,14 +53,14 @@ ScavTrap&   ScavTrap::operator=( ScavTrap const & src)
 
 void	ScavTrap::attack ( const std::string & src )
 {
-	if (_energy_point <= 0)
-	{
-		std::cout << "ScavTrap " << this->_name << " has no energy left\n";
-		return;
-	}
 	if (_hp <= 0)
 	{
 		std::cout <<  "ScavTrap " << this->_name << " is dead\n";
+		return;
+	}
+	if (_energy_point <= 0)
+	{
+		std::cout << "ScavTrap " << this->_name << " has no energy left\n";
 		return;
 	}
 	_energy_point--;
@@ -70,11 +69,6 @@ void	ScavTrap::attack ( const std::string & src )
 
 void    ScavTrap::guardGate()
 {
-	if (_energy_point <= 0)
-	{
-		std::cout << "ScavTrap " << this->_name << " has no energy left\n";
-		return ;
-	}
 	if (_hp <= 0)
 	{
 		std::cout  << "ScavTrap " << this->_name << " is dead\n";

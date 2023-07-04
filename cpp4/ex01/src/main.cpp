@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:34:48 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/29 18:24:26 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/04 18:01:40 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,14 @@ int main()
 // delete i;
 // return 0;
 
-    Cat* tim = new Cat;
-
-    tim->think();
-
-    delete tim;
+	Animal	*Zoo[10];
+	for (int i = 0; i < 10; i++)
+	{
+		if (i %2 == 0)
+			Zoo[i] = new Dog;
+		else
+			Zoo[i] = new Cat;
+	}
+	for (int i = 0; i < 10; i++)
+		delete Zoo[i];
 }

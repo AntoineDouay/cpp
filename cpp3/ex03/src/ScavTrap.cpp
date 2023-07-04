@@ -6,13 +6,13 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:05:13 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/15 18:05:15 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/04 16:31:47 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap()
+ScavTrap::ScavTrap() 
 {
     _hp = 100;
     _energy_point = 50;
@@ -23,7 +23,6 @@ ScavTrap::ScavTrap() : ClapTrap()
 
 ScavTrap::ScavTrap( const std::string name ) : ClapTrap( name )
 {
-    _name = name;
     _hp = 100;
     _energy_point = 50;
     _atk_dmg = 20;
@@ -33,7 +32,6 @@ ScavTrap::ScavTrap( const std::string name ) : ClapTrap( name )
 
 ScavTrap::ScavTrap( ScavTrap const & src) : ClapTrap( src )
 {
-    *this = src;
     std::cout << "ScavTrap copy constructor called\n";
     return ;
 }
@@ -53,9 +51,29 @@ ScavTrap&   ScavTrap::operator=( ScavTrap const & src)
     return *this;
 }
 
-void    ScavTrap::guardGate()
+void	ScavTrap::attack ( const std::string & src )
 {
-    std::cout << _name << " goes into guardGate mode \n";
-    return ;
+	if (_hp <= 0)
+	{
+		std::cout <<  "ScavTrap " << this->_name << " is dead\n";
+		return;
+	}
+	if (_energy_point <= 0)
+	{
+		std::cout << "ScavTrap " << this->_name << " has no energy left\n";
+		return;
+	}
+	_energy_point--;
+	std::cout << "ScavTrap " << _name << " attack by " << _atk_dmg << " hp " << src << std::endl;
 }
 
+void    ScavTrap::guardGate()
+{
+	if (_hp <= 0)
+	{
+		std::cout  << "ScavTrap " << this->_name << " is dead\n";
+		return;
+	}
+    std::cout << "ScavTrap " << _name << " goes into guardGate mode \n";
+    return ;
+}

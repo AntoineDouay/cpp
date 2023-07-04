@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:34:51 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/29 18:24:04 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/04 18:04:18 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,15 @@
 
 Animal::Animal()
 {
-	_type = "Animal";
 	std::cout << "Default Animal Constructor Called \n";
-	return ;
-}
-
-Animal::Animal( std::string name_type ) : _type( name_type )
-{
-	std::cout << "String Name Animal Constructor Called \n";
+	_type = "Animal";
 	return ;
 }
 
 Animal::Animal (Animal const & copy )
 {
-	*this = copy;
 	std::cout << "Copy Animal Constructor Called \n";
+	*this = copy;
 	return ;
 }
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/04 16:19:28 by adouay            #+#    #+#             */
+/*   Updated: 2023/07/04 16:19:29 by adouay           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRAGTRAP_HPP
 
 # define FRAGTRAP_HPP
@@ -17,7 +29,6 @@ class FragTrap : public ClapTrap{
 
 	FragTrap&	operator=( FragTrap const & src );
 
-    void	attack( const std::string& target );
     void	highFivesGuys( void );
 };
 

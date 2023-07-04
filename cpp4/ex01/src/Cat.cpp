@@ -6,23 +6,24 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:34:54 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/29 18:14:38 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/04 18:04:11 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Cat.hpp"
 
-Cat::Cat() : Animal("Cat")
+Cat::Cat()
 {
-	_cervo = new Brain;
 	std::cout << "Default Cat Constructor called \n";
+	_type = "Cat";
+	_cervo = new Brain;
 	return ;
 }
 
 Cat::Cat( Cat const & copy ) : Animal  ( copy )
 {
-	*this = copy;
 	std::cout << "copy Cat Constructor called \n";
+	*this = copy;
 	return ;
 }
 
@@ -46,6 +47,7 @@ void	Cat::think()
 
 Cat::~Cat()
 {
+	delete _cervo;
 	std::cout << "Cat Destructor called \n";
 	return ;
 }

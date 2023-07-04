@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:34:38 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/29 18:25:48 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/04 18:02:41 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class Animal {
 	public :
 
 	Animal( void );
-	Animal( std::string name_type );
 	Animal( Animal const & copy );
 	virtual ~Animal( void );
 	

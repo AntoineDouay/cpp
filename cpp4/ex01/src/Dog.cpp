@@ -6,23 +6,24 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:34:57 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/29 18:14:42 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/04 18:03:57 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Dog.hpp"
 
-Dog::Dog() : Animal ( "Dog" )
+Dog::Dog()
 {
-	_cervo = new Brain;
 	std::cout << "Default Dog Constructor called \n";
+	_type = "Dog";
+	_cervo = new Brain;
 	return ;
 }
 
 Dog::Dog( Dog const & copy ) : Animal ( copy )
 {
-	*this = copy;
 	std::cout << "copy Dog Constructor called \n";
+	*this = copy;
 	return ;
 }
 
@@ -46,6 +47,7 @@ void	Dog::think()
 
 Dog::~Dog()
 {
+	delete _cervo;
 	std::cout << "Dog Destructor called \n";
 	return ;
 }

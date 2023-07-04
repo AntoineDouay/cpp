@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/04 14:11:09 by adouay            #+#    #+#             */
+/*   Updated: 2023/07/04 16:31:40 by adouay           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap()
+FragTrap::FragTrap() 
 {
     _hp = 100;
     _energy_point = 100;
@@ -11,7 +23,6 @@ FragTrap::FragTrap() : ClapTrap()
 
 FragTrap::FragTrap( const std::string name ) : ClapTrap( name )
 {
-    _name = name;
     _hp = 100;
     _energy_point = 100;
     _atk_dmg = 30;
@@ -21,7 +32,6 @@ FragTrap::FragTrap( const std::string name ) : ClapTrap( name )
 
 FragTrap::FragTrap( FragTrap const & src) : ClapTrap( src )
 {
-    *this = src;
     std::cout << "FragTrap copy constructor called\n";
     return ;
 }
@@ -43,6 +53,11 @@ FragTrap&   FragTrap::operator=( FragTrap const & src)
 
 void    FragTrap::highFivesGuys()
 {
-    std::cout << _name << " give me a Highfive !!\n";
+	if (_hp <= 0)
+	{
+		std::cout  << "FragTrap " << this->_name << " is dead\n";
+		return;
+	}
+    std::cout << "FragTrap " << _name << " give me a Highfive !!\n";
 }
 

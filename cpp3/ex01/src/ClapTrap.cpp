@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/04 13:17:39 by adouay            #+#    #+#             */
+/*   Updated: 2023/07/04 13:22:28 by adouay           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../include/ClapTrap.hpp"
 
 ClapTrap::ClapTrap( void )
 {
-    std::cout << "ClapTrap Constructor called\n";
+    std::cout << "ClapTrap default Constructor called\n";
     _name = "unknow";
     _hp = 10;
     _energy_point = 10;
@@ -43,14 +54,14 @@ ClapTrap&   ClapTrap::operator=( ClapTrap const &src )
 
 void    ClapTrap::attack ( const std::string& target )
 {
-	if (_energy_point <= 0)
-	{
-		std::cout << "ClapTrap " << this->_name << " has no energy left\n";
-		return;
-	}
 	if (_hp <= 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " is dead\n";
+		return;
+	}
+	if (_energy_point <= 0)
+	{
+		std::cout << "ClapTrap " << this->_name << " has no energy left\n";
 		return;
 	}
 	_energy_point--;
@@ -59,15 +70,15 @@ void    ClapTrap::attack ( const std::string& target )
 
 void    ClapTrap::beRepaired( unsigned int amount )
 {
-	if (_energy_point <= 0)
-	{
-		std::cout << "ClapTrap " << this->_name << " has no energy left\n";
-		return ; 
-	}
 	if (_hp <= 0)
 	{
 		std::cout <<  "ClapTrap " << this->_name << " is dead\n";
 		return;
+	}
+	if (_energy_point <= 0)
+	{
+		std::cout << "ClapTrap " << this->_name << " has no energy left\n";
+		return ; 
 	}
 	_energy_point--;
 	_hp += amount;

@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:04:57 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/30 17:05:03 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/04 16:23:31 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 int main()
 {
 	ScavTrap tim("tim");
+	ScavTrap tam(tim);
 	ScavTrap tom;
-	tom = tim;
 
+	tom.takeDamage(100);
+	tom.beRepaired(60);
+	tom = tim;
+	tom.attack("peter");
 	tim.attack("sam");
 	tim.beRepaired(20);
 	tim.guardGate();
