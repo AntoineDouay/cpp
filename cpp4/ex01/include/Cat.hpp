@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 18:04:57 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/30 17:05:03 by adouay           ###   ########.fr       */
+/*   Created: 2023/05/29 16:34:44 by adouay            #+#    #+#             */
+/*   Updated: 2023/05/29 18:14:27 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ScavTrap.hpp"
+#ifndef CAT_HPP
 
-int main()
-{
-	ScavTrap tim("tim");
-	ScavTrap tom;
-	tom = tim;
+# define CAT_HPP
 
-	tim.attack("sam");
-	tim.beRepaired(20);
-	tim.guardGate();
-    return 0;
-}
+#include "Animal.hpp"
+#include "Brain.hpp"
+
+class Brain;
+
+class Cat : public Animal{
+
+	public :
+	
+	Cat( void );
+	Cat( Cat const & copy );
+	~Cat ( void );
+
+	Cat&	operator=( Cat const & src );
+	void makeSound( void ) const;
+	void	think();
+
+	private :
+
+	Brain*	_cervo;
+};
+
+#endif

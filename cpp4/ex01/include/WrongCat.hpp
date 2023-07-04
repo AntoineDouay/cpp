@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 18:04:57 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/30 17:05:03 by adouay           ###   ########.fr       */
+/*   Created: 2023/05/29 16:34:44 by adouay            #+#    #+#             */
+/*   Updated: 2023/05/29 18:14:27 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ScavTrap.hpp"
+#ifndef WRONGCAT_HPP
 
-int main()
-{
-	ScavTrap tim("tim");
-	ScavTrap tom;
-	tom = tim;
+# define WRONGCAT_HPP
 
-	tim.attack("sam");
-	tim.beRepaired(20);
-	tim.guardGate();
-    return 0;
-}
+#include "WrongAnimal.hpp"
+
+class WrongCat : public WrongAnimal{
+
+	public :
+	
+	WrongCat( void );
+	WrongCat( WrongCat const & copy );
+	~WrongCat ( void );
+
+	WrongCat&	operator=( WrongCat const & src );
+	void makeSound( void ) const;
+
+};
+
+#endif

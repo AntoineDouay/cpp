@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 18:04:57 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/30 17:05:03 by adouay           ###   ########.fr       */
+/*   Created: 2023/05/29 16:34:38 by adouay            #+#    #+#             */
+/*   Updated: 2023/05/29 18:25:48 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ScavTrap.hpp"
+# ifndef ANIMAL_HPP
 
-int main()
-{
-	ScavTrap tim("tim");
-	ScavTrap tom;
-	tom = tim;
+# define ANIMAL_HPP
 
-	tim.attack("sam");
-	tim.beRepaired(20);
-	tim.guardGate();
-    return 0;
-}
+#include <iostream>
+
+class Animal {
+
+	public :
+
+	Animal( void );
+	Animal( std::string name_type );
+	Animal( Animal const & copy );
+	virtual ~Animal( void );
+	
+	Animal&	operator=( Animal const & src );
+
+	std::string	getType( void ) const;
+
+	virtual void makeSound( void ) const;
+
+	protected :
+
+	std::string	_type;
+	
+};
+
+#endif

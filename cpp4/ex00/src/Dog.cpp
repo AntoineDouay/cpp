@@ -12,31 +12,24 @@
 
 #include "../include/Dog.hpp"
 
-Dog::Dog()
+Dog::Dog() : Animal ( "Dog" )
 {
-	Animal::_type = "Dog";
 	std::cout << "Default Dog Constructor called \n";
 	return ;
 }
 
-// Dog::Dog( std::string animal_type )
-// {
-// 	Animal::_type = "Dog";
-// 	std::cout << "string type Dog Constructor called \n";
-// 	return ;
-// }
+Dog::Dog( Dog const & copy ) : Animal ( copy )
+{
+	*this = copy;
+	std::cout << "copy Dog Constructor called \n";
+	return ;
+}
 
-// Dog::Dog( Dog const & copy )
-// {
-// 	*this = copy;
-// 	std::cout << "copy Dog Constructor called \n";
-// 	return ;
-// }
-
-// Dog&	Dog::operator=( Dog const & src )
-// {
-	
-// }
+Dog&	Dog::operator=( Dog const & src )
+{
+	_type = src._type;
+	return (*this);
+}
 
 void	Dog::makeSound() const
 {

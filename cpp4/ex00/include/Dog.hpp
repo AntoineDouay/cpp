@@ -21,11 +21,10 @@ class Dog : public Animal{
 	public : 
 	
 	Dog( void );
-	//Dog( std::string animal_type );
 	Dog( Dog const & copy );
 	~Dog ( void );
 
-	//Dog&	operator=( Dog const & src );
+	Dog&	operator=( Dog const & src );
 
 	void makeSound( void ) const;
 

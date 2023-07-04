@@ -10,35 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Cat.hpp"
+#include "../include/WrongCat.hpp"
 
-Cat::Cat() : Animal("Cat")
+WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {
-	std::cout << "Default Cat Constructor called \n";
+	std::cout << "Default WrongCat Constructor called \n";
 	return ;
 }
 
-Cat::Cat( Cat const & copy ) : Animal  ( copy )
+WrongCat::WrongCat( WrongCat const & copy ) : WrongAnimal  ( copy )
 {
 	*this = copy;
-	std::cout << "copy Cat Constructor called \n";
+	std::cout << "copy WrongCat Constructor called \n";
 	return ;
 }
 
-Cat&	Cat::operator=( Cat const & src )
+WrongCat&	WrongCat::operator=( WrongCat const & src )
 {
 	_type = src._type;
 	return (*this);
 }
 
-void	Cat::makeSound() const
+void	WrongCat::makeSound() const
 {
-	std::cout << "Miaow Miaow....\n";
+	std::cout << "Pouet Pouet....\n";
 	return ;
 }
 
-Cat::~Cat()
+WrongCat::~WrongCat()
 {
-	std::cout << "Cat Destructor called \n";
+	std::cout << "WrongCat Destructor called \n";
 	return ;
 }

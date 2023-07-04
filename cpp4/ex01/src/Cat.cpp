@@ -14,6 +14,7 @@
 
 Cat::Cat() : Animal("Cat")
 {
+	_cervo = new Brain;
 	std::cout << "Default Cat Constructor called \n";
 	return ;
 }
@@ -28,6 +29,7 @@ Cat::Cat( Cat const & copy ) : Animal  ( copy )
 Cat&	Cat::operator=( Cat const & src )
 {
 	_type = src._type;
+	_cervo = src._cervo;
 	return (*this);
 }
 
@@ -35,6 +37,11 @@ void	Cat::makeSound() const
 {
 	std::cout << "Miaow Miaow....\n";
 	return ;
+}
+
+void	Cat::think()
+{
+	std::cout << "cat thinking about " << _cervo->getIdea() << std:: endl;
 }
 
 Cat::~Cat()

@@ -28,22 +28,28 @@
 int main()
 {
 
-const WrongAnimal* tang = new WrongCat();
-const Animal* meta = new Animal();
-const Animal* i = new Cat();
-const Animal* j = new Dog();
-std::cout << tang->getType() << " " << std::endl;
-std::cout << j->getType() << " " << std::endl;
-std::cout << i->getType() << " " << std::endl;
-tang->makeSound(); //will output the cat sound!
-i->makeSound();
-j->makeSound();
-meta->makeSound();
+// const WrongAnimal* tang = new WrongCat();
+// const Animal* meta = new Animal();
+// //const Animal* j = new Dog();
+// const Animal* i = new Cat();
+// std::cout << tang->getType() << " " << std::endl;
+// //std::cout << j->getType() << " " << std::endl;
+// std::cout << i->getType() << " " << std::endl;
+// tang->makeSound(); //will output the cat sound!
+// i->makeSound();
+// //j->makeSound();
+// meta->makeSound();
 
 
-delete tang;
-delete meta;
-delete j;
-delete i;
-return 0;
+// delete tang;
+// delete meta;
+// //delete j;
+// delete i;
+// return 0;
+
+    Cat* tim = new Cat;
+
+    tim->think();
+
+    delete tim;
 }

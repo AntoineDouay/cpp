@@ -12,7 +12,7 @@
 
 #include "../include/ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap()
+ScavTrap::ScavTrap() 
 {
     _hp = 100;
     _energy_point = 50;
@@ -23,7 +23,6 @@ ScavTrap::ScavTrap() : ClapTrap()
 
 ScavTrap::ScavTrap( const std::string name ) : ClapTrap( name )
 {
-    _name = name;
     _hp = 100;
     _energy_point = 50;
     _atk_dmg = 20;

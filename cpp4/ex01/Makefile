@@ -14,7 +14,7 @@
 #                                   TARGETS                                    #
 #==============================================================================#
 
-NAME = Animal
+NAME = Brain
 
 #==============================================================================#
 #                                   COMMANDS                                   #
@@ -48,13 +48,13 @@ OBJ_DIR = obj/
 #                                   SOURCES                                    #
 #==============================================================================#
 
-SRC = main.cpp Animal.cpp WrongAnimal.cpp Dog.cpp Cat.cpp WrongCat.cpp
+SRC = main.cpp Brain.cpp Animal.cpp WrongAnimal.cpp Dog.cpp Cat.cpp WrongCat.cpp
 
 #==============================================================================#
 #                                   HEADERS                                    #
 #==============================================================================#
 
-HEAD = $(addprefix $(HEADER_DIR), Animal.hpp WrongAnimal.hpp Dog.hpp Cat.hpp WrongCat.hpp ) \
+HEAD = $(addprefix $(HEADER_DIR), Animal.hpp Brain.hpp WrongAnimal.hpp Dog.hpp Cat.hpp WrongCat.hpp ) \
 
 #==============================================================================#
 #                                   OBJECTS                                    #
