@@ -19,6 +19,12 @@ WrongAnimal::WrongAnimal()
 	return ;
 }
 
+WrongAnimal::WrongAnimal( std::string name_type ) : _type( name_type )
+{
+	std::cout << "String Name WrongAnimal Constructor Called \n";
+	return ;
+}
+
 WrongAnimal::WrongAnimal (WrongAnimal const & copy )
 {
 	*this = copy;

@@ -1,45 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 16:34:54 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/29 18:14:38 by adouay           ###   ########.fr       */
+/*   Created: 2023/05/29 16:34:51 by adouay            #+#    #+#             */
+/*   Updated: 2023/07/04 18:04:18 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/WrongCat.hpp"
+#include "../include/Animal.hpp"
 
-WrongCat::WrongCat()
+Animal::Animal()
 {
-	_type = "WrongCat";
-	std::cout << "Default WrongCat Constructor called \n";
+	std::cout << "Default Animal Constructor Called \n";
+	_type = "Animal";
 	return ;
 }
 
-WrongCat::WrongCat( WrongCat const & copy ) : WrongAnimal  ( copy )
+Animal::Animal (Animal const & copy )
 {
+	std::cout << "Copy Animal Constructor Called \n";
 	*this = copy;
-	std::cout << "copy WrongCat Constructor called \n";
 	return ;
 }
 
-WrongCat&	WrongCat::operator=( WrongCat const & src )
+Animal&	Animal::operator=( Animal const & src )
 {
 	_type = src._type;
-	return (*this);
+	return *this;
 }
 
-void	WrongCat::makeSound() const
+std::string	Animal::getType() const
 {
-	std::cout << "Pouet Pouet....\n";
+	return _type;
+}
+
+void	Animal::makeSound() const
+{
+	std::cout << "Idk what Animal I am ;/ \n";
 	return ;
 }
 
-WrongCat::~WrongCat()
+Animal::~Animal()
 {
-	std::cout << "WrongCat Destructor called \n";
-	return ;
+	std::cout << "Animal Destructor Called\n";
 }

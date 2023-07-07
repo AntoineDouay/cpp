@@ -6,29 +6,29 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:34:38 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/29 18:25:48 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/04 18:02:41 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef WRONGANIMAL_HPP
+# ifndef ANIMAL_HPP
 
-# define WRONGANIMAL_HPP
+# define ANIMAL_HPP
 
 #include <iostream>
 
-class WrongAnimal {
+class Animal {
 
 	public :
 
-	WrongAnimal( void );
-	WrongAnimal( WrongAnimal const & copy );
-	virtual ~WrongAnimal( void );
+	Animal( void );
+	Animal( Animal const & copy );
+	virtual ~Animal( void );
 	
-	WrongAnimal&	operator=( WrongAnimal const & src );
+	Animal&	operator=( Animal const & src );
 
 	std::string	getType( void ) const;
 
-	virtual void makeSound( void ) const;
+	virtual void makeSound( void ) const = 0;
 
 	protected :
 

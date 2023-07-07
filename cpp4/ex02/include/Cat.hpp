@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 16:34:38 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/29 18:25:48 by adouay           ###   ########.fr       */
+/*   Created: 2023/05/29 16:34:44 by adouay            #+#    #+#             */
+/*   Updated: 2023/05/29 18:14:27 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef WRONGANIMAL_HPP
+#ifndef CAT_HPP
 
-# define WRONGANIMAL_HPP
+# define CAT_HPP
 
-#include <iostream>
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-class WrongAnimal {
+class Brain;
+
+class Cat : public Animal{
 
 	public :
-
-	WrongAnimal( void );
-	WrongAnimal( WrongAnimal const & copy );
-	virtual ~WrongAnimal( void );
 	
-	WrongAnimal&	operator=( WrongAnimal const & src );
+	Cat( void );
+	Cat( Cat const & copy );
+	~Cat ( void );
 
-	std::string	getType( void ) const;
+	Cat&	operator=( Cat const & src );
+	void makeSound( void ) const;
+	void	think();
 
-	virtual void makeSound( void ) const;
+	private :
 
-	protected :
-
-	std::string	_type;
-	
+	Brain*	_cervo;
 };
 
 #endif

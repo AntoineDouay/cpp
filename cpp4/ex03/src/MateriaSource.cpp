@@ -1,0 +1,64 @@
+
+#include "../include/MateriaSource.hpp"
+
+MateriaSource::MateriaSource()
+{
+    for(int i = 0; i < 4; i++)
+        _learned[i] = NULL;
+}
+
+MateriaSource::MateriaSource( const MateriaSource & copy)
+{
+    *this = copy;
+}
+
+MateriaSource&  MateriaSource::operator=(const MateriaSource & src)
+{
+     for(int i = 0; i < 3; i++)
+    {
+        if (_learned[i])
+            delete _learned[i];
+        if (!src._learned[i])
+            _learned[i] = NULL;
+        else if (src._learned[i]->getType() == "ice")
+            _learned[i] = new Ice();
+        else if (src._learned[i]->getType() == "cure")
+            _learned[i] = new Cure();
+    }
+    return *this;
+}
+
+void    MateriaSource::learnMateria(AMateria* Materia)
+{
+    int i = 0;
+
+    for (i; i < 4; i++)
+    {
+        if (!_learned[i])
+            break ;
+    }
+    if (Materia->getType() == "ice")
+        _learned[i] = new Ice();
+    else if (Materia->getType() == "cure")
+        _learned[i] = new Cure();
+}
+
+AMateria*   MateriaSource::createMateria(std::string const & type)
+{
+    for(int i = 0; i < 4; i++)
+    {
+        if(_learned[i]->getType() == "ice")
+            return (new Ice);
+        if(_learned[i]->getType() == "cure")
+            return (new Cure);
+    }
+    return 0;
+}
+MateriaSource::~MateriaSource()
+{
+    for(int i = 0; i < 4; i++)
+    {
+        if (_learned[i])
+            delete _learned[i];
+    }
+}

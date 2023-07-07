@@ -6,48 +6,39 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:34:54 by adouay            #+#    #+#             */
-/*   Updated: 2023/07/04 18:04:11 by adouay           ###   ########.fr       */
+/*   Updated: 2023/05/29 18:14:38 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Cat.hpp"
+#include "../include/WrongCat.hpp"
 
-Cat::Cat()
+WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {
-	std::cout << "Default Cat Constructor called \n";
-	_type = "Cat";
-	_cervo = new Brain;
+	std::cout << "Default WrongCat Constructor called \n";
 	return ;
 }
 
-Cat::Cat( Cat const & copy ) : Animal( copy )
+WrongCat::WrongCat( WrongCat const & copy ) : WrongAnimal  ( copy )
 {
-	std::cout << "copy Cat Constructor called \n";
-	_cervo = new Brain( *copy._cervo );
+	*this = copy;
+	std::cout << "copy WrongCat Constructor called \n";
 	return ;
 }
 
-Cat&	Cat::operator=( Cat const & src )
+WrongCat&	WrongCat::operator=( WrongCat const & src )
 {
 	_type = src._type;
-	*_cervo = *src._cervo;
 	return (*this);
 }
 
-void	Cat::makeSound() const
+void	WrongCat::makeSound() const
 {
-	std::cout << "Miaow Miaow....\n";
+	std::cout << "Pouet Pouet....\n";
 	return ;
 }
 
-void	Cat::think()
+WrongCat::~WrongCat()
 {
-	std::cout << "cat thinking about " << _cervo->getIdea() << std:: endl;
-}
-
-Cat::~Cat()
-{
-	delete _cervo;
-	std::cout << "Cat Destructor called \n";
+	std::cout << "WrongCat Destructor called \n";
 	return ;
 }

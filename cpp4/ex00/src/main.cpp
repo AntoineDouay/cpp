@@ -28,14 +28,14 @@
 int main()
 {
 
-const WrongAnimal* tang = new WrongCat();
+const WrongAnimal* tang = new WrongCat;
 const Animal* meta = new Animal();
 const Animal* i = new Cat();
 const Animal* j = new Dog();
 
 std::cout << tang->getType() << " " << std::endl;
-std::cout << j->getType() << " " << std::endl;
 std::cout << i->getType() << " " << std::endl;
+std::cout << j->getType() << " " << std::endl;
 tang->makeSound(); //will output the cat sound!
 i->makeSound();
 j->makeSound();

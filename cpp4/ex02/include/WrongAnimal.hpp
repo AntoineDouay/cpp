@@ -21,6 +21,7 @@ class WrongAnimal {
 	public :
 
 	WrongAnimal( void );
+	WrongAnimal( std::string name_type );
 	WrongAnimal( WrongAnimal const & copy );
 	virtual ~WrongAnimal( void );
 	
