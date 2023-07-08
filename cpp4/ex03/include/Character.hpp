@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/08 18:34:44 by adouay            #+#    #+#             */
+/*   Updated: 2023/07/08 18:34:46 by adouay           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CHARACTER_HPP
 
 # define CHARACTER_HPP
@@ -20,9 +32,9 @@ class Character : public ICharacter
 
     std::string const & getName() const;
 
-    void equip(AMateria* m);
+	void equip(AMateria* m);
     void unequip(int idx);
-    void use(int idx, Character& target);
+    void use(int idx, ICharacter& target);
 
     private :
 

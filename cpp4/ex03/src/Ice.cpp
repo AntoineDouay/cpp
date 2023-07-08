@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/08 18:34:58 by adouay            #+#    #+#             */
+/*   Updated: 2023/07/08 18:34:59 by adouay           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/Ice.hpp"
 
 Ice::Ice()
@@ -13,6 +25,7 @@ Ice::Ice( const Ice & copy )
 Ice&    Ice::operator=(const Ice & src )
 {
     _type = src._type;
+	return *this;
 }
 
 AMateria*    Ice::clone() const

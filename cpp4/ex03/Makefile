@@ -6,7 +6,7 @@
 #    By: adouay <adouay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 15:20:33 by adouay            #+#    #+#              #
-#    Updated: 2023/05/29 15:23:26 by adouay           ###   ########.fr        #
+#    Updated: 2023/07/08 12:41:18 by adouay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,13 +48,13 @@ OBJ_DIR = obj/
 #                                   SOURCES                                    #
 #==============================================================================#
 
-SRC = main.cpp AMateria.cpp
+SRC = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 
 #==============================================================================#
 #                                   HEADERS                                    #
 #==============================================================================#
 
-HEAD = $(addprefix $(HEADER_DIR), AMateria.hpp ) \
+HEAD = $(addprefix $(HEADER_DIR), AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp IMateriaSource.hpp MateriaSource.hpp) \
 
 #==============================================================================#
 #                                   OBJECTS                                    #

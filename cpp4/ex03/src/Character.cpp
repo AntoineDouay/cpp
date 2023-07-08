@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/08 18:34:33 by adouay            #+#    #+#             */
+/*   Updated: 2023/07/08 18:34:35 by adouay           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../include/Character.hpp"
 #include "../include/Ice.hpp"
@@ -6,7 +17,7 @@
 Character::Character()
 {
     _name = "unkmow";
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < 4; i++)
         _inventory[i] = NULL;
     _trash = NULL;
     _count = 0;
@@ -15,7 +26,7 @@ Character::Character()
 Character::Character( std::string const & name )
 {
     _name = name;
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < 4; i++)
         _inventory[i] = NULL;
     _trash = NULL;
     _count = 0;
@@ -23,32 +34,33 @@ Character::Character( std::string const & name )
 
 Character::Character(const Character & copy )
 {
+	_name = "unkmow";
+    for(int i = 0; i < 4; i++)
+        _inventory[i] = NULL;
+    _trash = NULL;
+    _count = 0;
     *this = copy;
 }
 
 Character&   Character::operator=( const Character & src )
 {
     this->_name = src._name;
-    for(int i = 0; i < 3; i++)
+	_count = src._count;
+    for(int i = 0; i < 4; i++)
     {
-        if (_inventory[i])
-            delete _inventory[i];
-        if (!src._inventory[i])
-            _inventory[i] = NULL;
-        else if (src._inventory[i]->getType() == "ice")
-            _inventory[i] = new Ice();
-        else if (src._inventory[i]->getType() == "cure")
-            _inventory[i] = new Cure();
+        delete _inventory[i];
+		_inventory[i] = NULL;
+
+        if (src._inventory[i] != NULL)
+			_inventory[i] = src._inventory[i]->clone();
     }
-    if (_trash)
-        delete _trash;
-     if (!src._trash)
-            _trash = NULL;
-        else if (src._trash->getType() == "ice")
-            _trash = new Ice();
-        else if (src._trash->getType() == "cure")
-            _trash = new Cure();
-    
+
+    delete _trash;
+	_trash = NULL;
+
+     if (src._trash != NULL)
+			_trash = src._trash->clone();
+			
     return *this;
 }
 
@@ -67,38 +79,43 @@ void    Character::equip(AMateria* m)
     _inventory[_count] = m;
     _count++;
 }
+
 void    Character::unequip(int idx)
 {
-    if ((idx > 3 && idx < 0) || idx > _count)
+    if ((idx >= _count || idx < 0))
         return ;
     if (_trash)
         delete  _trash;
     _trash = _inventory[idx];
     _count--;
-    for(int i = 0; i < 4; i ++)
-    {
-        for(int j = i; j < 4; j++)
-        {
-            if (_inventory[j])
-            {
-                _inventory[i] = _inventory[j];
-                break ;
-            }
-        }
-    }
+    // for(int i = 0; i < 4; i ++)
+    // {
+    //     for(int j = i; j < 4; j++)
+    //     {
+    //         if (_inventory[j])
+    //         {
+    //             _inventory[i] = _inventory[j];
+    //             break ;
+    //         }
+    //     }
+    // }
+	for(int i = idx; i < _count; i++)
+		_inventory[i] = _inventory[i + 1];
+	_inventory[_count] = NULL;
 }
-void    Character::use(int idx, Character& target)
+void    Character::use(int idx, ICharacter& target)
 {
-    _inventory[idx]->use(target);
+	if ((idx >= 0 && idx < 4) && _inventory[idx] != NULL)
+    	_inventory[idx]->use(target);
 }
 
 Character::~Character()
 {
     for(int i = 0; i < 4; i++)
     {
-        if (_inventory[i])
+        if (_inventory[i] != NULL)
             delete _inventory[i];
     }
-    if (_trash)
+    if (_trash != NULL)
         delete _trash;
 }

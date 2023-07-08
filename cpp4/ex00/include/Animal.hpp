@@ -6,7 +6,7 @@
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:34:38 by adouay            #+#    #+#             */
-/*   Updated: 2023/07/04 17:19:46 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/08 17:59:20 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class Animal {
 	Animal&	operator=( Animal const & src );
 
 	std::string	getType( void ) const;
-
 	virtual void makeSound( void ) const;
 
 	protected :

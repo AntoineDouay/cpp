@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:34:38 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/29 18:25:48 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/08 17:49:54 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ class WrongAnimal {
 
 	WrongAnimal( void );
 	WrongAnimal( WrongAnimal const & copy );
-	virtual ~WrongAnimal( void );
+	~WrongAnimal( void );
 	
 	WrongAnimal&	operator=( WrongAnimal const & src );
 
 	std::string	getType( void ) const;
 
-	virtual void makeSound( void ) const;
+	void makeSound( void ) const;
 
 	protected :
 

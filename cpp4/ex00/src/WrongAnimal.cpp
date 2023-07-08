@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:34:51 by adouay            #+#    #+#             */
-/*   Updated: 2023/05/29 18:24:04 by adouay           ###   ########.fr       */
+/*   Updated: 2023/07/08 17:50:39 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ std::string	WrongAnimal::getType() const
 
 void	WrongAnimal::makeSound() const
 {
-	std::cout << "Idk what WrongAnimal I am ;/ \n";
+	std::cout << "Wrong Animal goes Brrrrrrrr \n";
 	return ;
 }
 

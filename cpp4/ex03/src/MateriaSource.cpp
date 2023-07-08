@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/08 18:35:03 by adouay            #+#    #+#             */
+/*   Updated: 2023/07/08 18:35:05 by adouay           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../include/MateriaSource.hpp"
 
@@ -30,27 +41,31 @@ MateriaSource&  MateriaSource::operator=(const MateriaSource & src)
 
 void    MateriaSource::learnMateria(AMateria* Materia)
 {
-    int i = 0;
-
-    for (i; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
-        if (!_learned[i])
-            break ;
+        if (_learned[i] == NULL)
+		{
+			if (Materia->getType() == "ice")
+				_learned[i] = Materia;
+			if (Materia->getType() == "cure")
+				_learned[i] = Materia;
+            return ;
+		}
     }
-    if (Materia->getType() == "ice")
-        _learned[i] = new Ice();
-    else if (Materia->getType() == "cure")
-        _learned[i] = new Cure();
+	delete Materia;
 }
 
 AMateria*   MateriaSource::createMateria(std::string const & type)
 {
     for(int i = 0; i < 4; i++)
     {
-        if(_learned[i]->getType() == "ice")
-            return (new Ice);
-        if(_learned[i]->getType() == "cure")
-            return (new Cure);
+		if (_learned[i] != NULL && _learned[i]->getType() == type)
+        {
+			if(_learned[i]->getType() == "ice")
+				return (new Ice);
+			else if(_learned[i]->getType() == "cure")
+				return (new Cure);
+		}
     }
     return 0;
 }
