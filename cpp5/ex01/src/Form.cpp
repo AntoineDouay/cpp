@@ -11,8 +11,17 @@ Form::Form() : _name("unknow"), _signed(false), _grade_to_sign(150), _grade_to_e
 Form::Form(const std::string name, const int grade_to_sign, const int grade_to_exec) : _name(name), _grade_to_sign(grade_to_sign), _grade_to_exec(grade_to_exec)
 {
     std::cout << "Param Form constructor called\n";
-}
 
+    if (_grade_to_sign < 1)
+        throw Form::GradeTooHighException();
+    else if (_grade_to_sign > 150)
+        throw Form::GradeTooLowException();
+        
+    if (_grade_to_exec < 1)
+        throw Form::GradeTooHighException();
+    else if (_grade_to_exec > 150)
+        throw Form::GradeTooLowException();
+}
 Form::Form( const Form& copy) : _name(copy._name), _signed(copy._signed), _grade_to_sign(copy._grade_to_sign), _grade_to_exec(copy._grade_to_exec)
 {
     std::cout << "Copy Form constructor called\n";
@@ -29,7 +38,7 @@ std::string Form::getName() const
     return _name;
 }
 
-bool    Form::getSigned() const
+bool    Form::IsSigned() const
 {
     return _signed;
 }
@@ -54,7 +63,7 @@ void    Form::beSigned(const Bureaucrat& b)
     }
     catch (FormException& e)
     {
-        std::cout << e.what() <<  " (in besigned function) \n"; 
+        std::cout << e.what() << " (in beSigned function) \n"; 
     }
 }
 
@@ -64,7 +73,7 @@ std::ostream&   operator<<(std::ostream& stream, const Form& src)
     stream << " | form can get signed at grade : " << src.getGradeToSign();
     stream << " | can get executate at grade : " << src.getGradeToExec();
     stream << " | current state : ";
-    if (src.getSigned() == true)
+    if (src.IsSigned() == true)
         stream << "signed\n";
     else
         stream << "unsigned\n";
