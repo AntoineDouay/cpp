@@ -4,12 +4,12 @@
 Bureaucrat::Bureaucrat() : _name("unknow")
 {
     _grade = 150;
-    std::cout << "Default constructeur called\n";
+    std::cout << "Bureaucrat Default constructeur called\n";
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-    std::cout << " Param constructeur called\n";
+    std::cout << "Bureaucrat Param constructeur called\n";
     try {
         if (_grade < 1)
             throw GradeTooHighException();
@@ -25,7 +25,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 
 Bureaucrat::Bureaucrat( const Bureaucrat & copy ) : _name(copy._name),  _grade(copy._grade)
 {
-    std::cout << "Copy constructeur called\n";
+    std::cout << "Bureacurat Copy constructeur called\n";
 }
 
 Bureaucrat& Bureaucrat::operator=( const Bureaucrat & src )

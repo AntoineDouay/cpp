@@ -48,13 +48,13 @@ OBJ_DIR = obj/
 #                                   SOURCES                                    #
 #==============================================================================#
 
-SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShruberryCreationForm.cpp
 
 #==============================================================================#
 #                                   HEADERS                                    #
 #==============================================================================#
 
-HEAD = $(addprefix $(HEADER_DIR), Bureaucrat.hpp AForm.hpp PresidentialPardonForm.hpp) \
+HEAD = $(addprefix $(HEADER_DIR), Bureaucrat.hpp AForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShruberryCreationForm.hpp) \
 
 #==============================================================================#
 #                                   OBJECTS                                    #
