@@ -1,5 +1,6 @@
 
 #include "../include/Bureaucrat.hpp"
+#include "../include/Intern.hpp"
 #include "../include/AForm.hpp"
 #include "../include/PresidentialPardonForm.hpp"
 #include "../include/RobotomyRequestForm.hpp"
@@ -9,10 +10,12 @@ int main()
 {
     std::cout << "----- Constucteur ----- \n\n";
 
-    Bureaucrat* Tom = new Bureaucrat("tom", 6);
-   	AForm*       president = new PresidentialPardonForm();
-    AForm*       robot = new RobotomyRequestForm("adouay");
-    AForm*       arbre = new ShruberryCreationForm("jardin");
+    Bureaucrat* Tom = new Bureaucrat("tom", 10);
+    Intern* 	Timi = new Intern();
+
+   	AForm*		president = new PresidentialPardonForm();
+    AForm*      robot = new RobotomyRequestForm("adouay");
+    AForm*      arbre = new ShruberryCreationForm("jardin");
     
 
     try {
@@ -26,6 +29,17 @@ int main()
     }
 
     std::cout << "\n ----------- \n";
+    std::cout << "----- Intern ----- \n\n";
+
+	AForm* pardon1 = Timi->makeForm("shruberry creation", "foret");
+	AForm* pardon2 = Timi->makeForm("president pardon", "voleur");
+
+	(void) pardon2;
+	pardon1->beSigned(*Tom);
+	pardon1->execute(*Tom);
+	
+	delete pardon1;
+
     std::cout << "----- Form Info ----- \n\n";
 
     std::cout << *president;
@@ -45,7 +59,7 @@ int main()
     std::cout << "\n ----------- \n";
     std::cout << "----- Form Exec ----- \n\n";
 
-    Tom->executeForm(*president);
+	Tom->executeForm(*president);
 
     robot->execute(*Tom);
 
@@ -61,6 +75,8 @@ int main()
     std::cout << "\n ----------- \n";
 
     delete Tom;
+    delete Timi;
+
     delete president;
     delete robot;
     delete arbre;

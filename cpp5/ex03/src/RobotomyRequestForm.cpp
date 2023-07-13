@@ -3,19 +3,18 @@
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequest", 72, 45)
 {
-    std::cout << "RobotomyRequestForm constructor called" << std::endl;
+    std::cout << "RobotomyRequestForm constructeur called" << std::endl;
     _target = "you";
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequest", 72, 45)
 {
-    std::cout << "RobotomyRequestForm Param constructor called" << std::endl;
+    std::cout << "RobotomyRequestForm Param constructeur called" << std::endl;
     _target = target;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm & copy)
 {
-    std::cout << "RobotomyRequestForm Copy constructor called" << std::endl;
     *this = copy;
 }
 

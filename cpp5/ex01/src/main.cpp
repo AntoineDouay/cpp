@@ -4,8 +4,8 @@
 
 int main()
 {
-    Bureaucrat* Tom = new Bureaucrat("tom", -1);
-    Form*       renvoie = new Form("renvoie", 10, 1);
+    Bureaucrat* Tom = new Bureaucrat("tom", 40);
+    Form*       renvoie = new Form("renvoie", 50, 1);
     
     try {
         Form*       promotion = new Form("promotion", 162, 1);
@@ -18,9 +18,11 @@ int main()
     std::cout << renvoie->getName() << std::endl;
     std::cout << *renvoie;
     renvoie->beSigned(*Tom);
+    std::cout << *renvoie;
 
     Tom->grade_down();
     Tom->grade_up();
+	
     std::cout << *Tom;
 
     delete Tom;

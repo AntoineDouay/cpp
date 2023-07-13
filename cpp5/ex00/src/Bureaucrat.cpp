@@ -9,7 +9,7 @@ Bureaucrat::Bureaucrat() : _name("unknow")
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-    std::cout << " Param constructeur called\n";
+    std::cout << "Param constructeur called\n";
     try {
         if (_grade < 1)
             throw GradeTooHighException();

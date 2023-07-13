@@ -78,6 +78,18 @@ void    Bureaucrat::signForm(const AForm& form)
         std::cout << _name << " couldn't sign " << form.getName() << " because his grade is too low"<< std::endl;
 }
 
+void    Bureaucrat::executeForm(AForm const & form)
+{
+	try{
+		form.execute(*this);
+		std::cout << _name << " execute " << form.getName() << std::endl;
+	}
+	catch(AForm::CannotExec &e)
+	{
+		std::cout << _name << " couldn't execute " << form.getName() << std::endl;
+	}
+}
+
 Bureaucrat::~Bureaucrat()
 {
     std::cout << "Default destructeur called\n";

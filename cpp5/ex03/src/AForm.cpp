@@ -70,8 +70,8 @@ void    AForm::beSigned(const Bureaucrat& b)
 void   AForm::execute(Bureaucrat const & executor) const
 {
     if (IsSigned() && executor.getGrade() <= getGradeToExec())
-    	execute_form();
-    else
+        execute_form();
+     else
         throw AForm::CannotExec();
 }
 

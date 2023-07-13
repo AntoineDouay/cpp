@@ -3,20 +3,19 @@
 
 ShruberryCreationForm::ShruberryCreationForm() : AForm("ShruberryCreation", 145, 137)
 {
-    std::cout << "ShruberryCreationForm constructor called" << std::endl;
+    std::cout << "ShruberryCreationForm constructeur called" << std::endl;
     _target = "you";
 }
 
 ShruberryCreationForm::ShruberryCreationForm(std::string target) : AForm("ShruberryCreation", 145, 137)
 {
-    std::cout << "ShruberryCreationForm Param constructor called" << std::endl;
+    std::cout << "ShruberryCreationForm Param constructeur called" << std::endl;
     _target = target;
 }
 
 ShruberryCreationForm::ShruberryCreationForm(const ShruberryCreationForm & copy)
 {
-    std::cout << "ShruberryCreationForm Copy constructor called" << std::endl;
-	*this = copy;
+    *this = copy;
 }
 
 ShruberryCreationForm& ShruberryCreationForm::operator=(const ShruberryCreationForm& src)

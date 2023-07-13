@@ -31,6 +31,7 @@ class Bureaucrat{
     void        signForm(const AForm& form);
 	void		executeForm(AForm const & form);
 
+
     class BureaucratException : public std::exception{
         public :
         virtual const char* what() const throw() = 0;
