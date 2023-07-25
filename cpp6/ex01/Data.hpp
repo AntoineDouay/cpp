@@ -2,6 +2,7 @@
 #ifndef DATA_HPP
 
 #include <iostream>
+#include <stdint.h>
 
 typedef struct Data
 {

@@ -1,8 +1,16 @@
 
 #include "../include/Converter.hpp"
 
+ScalarConverter::ScalarConverter::ScalarConverter() : _type(static_cast<type>(5)), _param(""), _value(0), _char(0), _int(0), _float(0), _double(0)
+{
+    _bool_type[0] = &ScalarConverter::isChar;
+    _bool_type[1] = &ScalarConverter::isInt;
+    _bool_type[2] = &ScalarConverter::isFloat;
+    _bool_type[3] = &ScalarConverter::isDouble;
+    _bool_type[4] = &ScalarConverter::isInf;
+}
 
-ScalarConverter::ScalarConverter(std::string param) : _type(static_cast<type>(5)), _param(param), _value(atof(param.c_str())), _char(0)
+ScalarConverter::ScalarConverter(std::string param) : _type(static_cast<type>(5)), _param(param), _value(atof(param.c_str())), _char(0),  _int(0), _float(0), _double(0)
 {
     _bool_type[0] = &ScalarConverter::isChar;
     _bool_type[1] = &ScalarConverter::isInt;
@@ -10,15 +18,9 @@ ScalarConverter::ScalarConverter(std::string param) : _type(static_cast<type>(5)
     _bool_type[3] = &ScalarConverter::isDouble;
     _bool_type[4] = &ScalarConverter::isInf;
 
-    int i = 0;
-    for(; i < 5; i++)
-    {
-        if((this->*_bool_type[i])(param))
-            _type = static_cast<type>(i);
-    }
 }
 
-ScalarConverter::ScalarConverter(const ScalarConverter & copy) : _type(static_cast<type>(5)), _param(NULL), _value(0), _char(0)
+ScalarConverter::ScalarConverter(const ScalarConverter & copy)
 {
     _bool_type[0] = &ScalarConverter::isChar;
     _bool_type[1] = &ScalarConverter::isInt;
@@ -30,14 +32,7 @@ ScalarConverter::ScalarConverter(const ScalarConverter & copy) : _type(static_ca
 }
 
 
-ScalarConverter::ScalarConverter::ScalarConverter() : _type(static_cast<type>(5)), _param(""), _value(0), _char(0)
-{
-    _bool_type[0] = &ScalarConverter::isChar;
-    _bool_type[1] = &ScalarConverter::isInt;
-    _bool_type[2] = &ScalarConverter::isFloat;
-    _bool_type[3] = &ScalarConverter::isDouble;
-    _bool_type[4] = &ScalarConverter::isInf;
-}
+
 ScalarConverter::~ScalarConverter(){}
 
 
@@ -47,9 +42,9 @@ ScalarConverter&    ScalarConverter::operator=(const ScalarConverter & src)
     _type = src._type;
     _value = src._value;
     _char = src._char;
-    // _int = src._int;
-    // _float = src._float;
-    // _double = src._double;
+    _int = src._int;
+    _float = src._float;
+    _double = src._double;
     return *this;
 }
 
@@ -62,7 +57,9 @@ bool ScalarConverter::isInt(std::string param)
 {
 	int i = 0;
     if (param[0] == '-' || param[0] == '+')
+	{
         i++;
+	}
 	for(; param[i]; i++)
 	{
         if(not isdigit(param[i]))
@@ -76,7 +73,9 @@ bool    ScalarConverter::isFloat(std::string param)
     unsigned int i = 0;
     bool point = false;
     if (param[0] == '-' || param[0] == '+')
+	{
         i++;
+	}
 	for(; param[i]; i++)
 	{
         if(not isdigit(param[i]))
@@ -88,7 +87,9 @@ bool    ScalarConverter::isFloat(std::string param)
         }
 	}
     if (param[i] == 'f' && param.size() == i + 1)
+	{
         return true;   
+	}
 	return false;
 }
 
@@ -97,7 +98,9 @@ bool    ScalarConverter::isDouble(std::string param)
     int i = 0;
     bool point = false;
     if (param[0] == '-' || param[0] == '+')
+	{
         i++;
+	}
 	for(; param[i]; i++)
 	{
         if(not isdigit(param[i]))
@@ -109,7 +112,9 @@ bool    ScalarConverter::isDouble(std::string param)
         }
 	}
     if (point)
-        return true;   
+	{
+        return true;
+	}
 	return false;
 }
 
@@ -127,17 +132,18 @@ void    ScalarConverter::printChar()
 {
     std::cout << "char: ";
     if( _type == CHAR)
-        std::cout << static_cast<char>(_value) << std::endl;
+        std::cout << _char << std::endl;
     else if (_type == INF)
     {
         std::cout << "impossible" << std::endl;
     }
     else
     {
-        if (not isprint(static_cast<int>(_value)))
+		_char = static_cast<char>(_value);
+        if (not isprint(_char))
             std::cout << "not displayable" << std::endl;
         else
-            std::cout << static_cast<char>(_value) << std::endl;
+            std::cout << _char << std::endl;
     }
 }
 void    ScalarConverter::printInt()
@@ -148,7 +154,9 @@ void    ScalarConverter::printInt()
         std::cout << "impossible" << std::endl;
         return;    
     }
-    std::cout << static_cast<int>(_value) << std::endl;
+	if (_type != INT)
+		_int = static_cast<int>(_value);
+    std::cout << _int << std::endl;
 }
 void    ScalarConverter::printFloat()
 {
@@ -161,7 +169,9 @@ void    ScalarConverter::printFloat()
         std::cout << std::endl;
         return ;
     }
-    std::cout << static_cast<float>(_value);
+    if (_type != FLOAT)
+		_float = static_cast<float>(_value);
+	std::cout << _float;
     if(_type == INT || _type == CHAR || noDecimal())
         std::cout << ".0";
     std::cout << "f" <<std::endl;
@@ -180,7 +190,9 @@ void    ScalarConverter::printDouble()
             std::cout << _param << std::endl;
         return ;    
     }
-    std::cout << static_cast<double>(_value);
+	if (_type != DOUBLE)
+		_double = static_cast<double>(_value);
+	std::cout << _double;
     if(_type == INT || _type == CHAR || noDecimal())
         std::cout << ".0";
     std::cout << std::endl; 
@@ -199,37 +211,6 @@ bool    ScalarConverter::noDecimal()
 		c++;
 	}
 	return (true);
-    // bool    point = false;
-    // unsigned long i = 0;
-    // if (_type == FLOAT || _type == DOUBLE)
-    // {
-    //     for (; _param[i]; i++)
-    //     {
-    //         if (_param[i] == '.')
-    //         {
-    //             point = true;
-    //             break ;
-    //         }
-    //     }
-    //     if (not point)
-    //         return true;
-    // }
-    // else
-    //     return true;
-
-    // if(_type == FLOAT)
-    // {
-    //     if (_param[i + 1] && _param[i + 2] && _param[i + 1] == '0' && _param[i + 2] == 'f')
-    //         return true;
-    //     return false;
-    // }
-    // if(_type == DOUBLE)
-    // {
-    //     if (_param[i + 1] && _param[i + 1] == '0')
-    //         return true;
-    //     return false;
-    // }
-    // return false;
 }
 
 void    ScalarConverter::convert(std::string param)
@@ -239,73 +220,37 @@ void    ScalarConverter::convert(std::string param)
     {
         if(param.empty())
             return;
-        else
-            _param = param;
     }
+	if (not param.empty())
+    	_param = param;
     int i = 0;
     for(; i < 5; i++)
     {
-        if((this->*_bool_type[i])(param))
+        if((this->*_bool_type[i])(_param))
             _type = static_cast<type>(i);
     }
-    if (_type == CHAR)
-    {
-        _char = static_cast<int>(param[0]);
-        _value = static_cast<int>(param[0]);
-    }
+	if(_type == INT)
+		_int = atoi(_param.c_str());
+	else if(_type == FLOAT)
+		_int = atof(_param.c_str());
+	else if(_type == DOUBLE)
+		_int = atof(_param.c_str());
     else if(_type == ERROR)
     {
         std::cout << "invalid param \n";
         return ;
     }
-    // else if (ERROR)
-    else
-        _value = atof(param.c_str());
-    std::cout << _type << std::endl;
+    _value = atof(_param.c_str());
 
+    if (_type == CHAR)
+    {
+        _char = static_cast<int>(_param[0]);
+        _value = static_cast<int>(_param[0]);
+    }
+	
     printChar();
     printInt();
     printFloat();
     printDouble();
-    // if (_type == CHAR)
-    // {
-    //     _char = _param[0];
-    //     _value = static_cast<double long>(_param[0]);
-    // }
-    // if (_type == INT)
-    //     _int = param[0];
-    // if (_type == CHAR)
-    //     _char = param[0];
-    // if (_type == CHAR)
-    //     _char = param[0];
-    //     _value = static_cast<char>(param[0]);
 }
-// void    displayChar(char c)
-// {
-//     std::cout << "char : " << c << std::endl;
-//     std::cout << "int : " << static_cast<int>(c) << std::endl;
-//     std::cout << "float : " << static_cast<float>(c) << ".0f" << std::endl;
-//     std::cout << "double : " << static_cast<double>(c) << ".0" <<  std::endl;
-// }
 
-// void    displayInt(int n)
-// {
-//     std::cout << "char : " << c << std::endl;
-//     std::cout << "int : " << static_cast<int>(c) << std::endl;
-//     std::cout << "float : " << static_cast<float>(c) << ".0f" << std::endl;
-//     std::cout << "double : " << static_cast<double>(c) << ".0" <<  std::endl;
-// }
-
-// void	checkParam(std::string param)
-// {
-//     if isInf(param)
-//         displayInf();
-// 	if(isChar(param))
-// 		displayChar(param[0]);
-// 	if(isInt(param))
-// 		return;
-//     if(isFloat(param))
-//         return;
-//     if(isDouble(param))
-//         return;
-// }

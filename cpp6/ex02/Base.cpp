@@ -45,51 +45,28 @@ void    identify(Base* p)
 
 void    identify(Base& p)
 {
-    // try {
-
-    //     if (dynamic_cast<A*>(&p))
-    //     {
-    //        std::cout << "This is class A\n";
-    //         return ;
-    //     }
-    
-    //     if (dynamic_cast<B*>(&p))
-    //     {
-    //        std::cout << "This is class B\n";
-    //         return ;
-    //     }
-
-    //     if (dynamic_cast<C*>(&p))
-    //     {
-    //        std::cout << "This is class C\n";
-    //         return ;
-    //     }
-    // }
-    // catch(std::exception & e)
-    // {
-    //     std::cout << "oupsi\n";
-    //     return ;
-    // }
     try {
         A& a = dynamic_cast<A&>(p);
         (void)a;
         std::cout << "This is class A\n";
     } 
-    catch (const std::bad_cast& e) {
+    catch (std::exception& e)
+	{
         try 
         {
             B& b = dynamic_cast<B&>(p);
             (void)b;
             std::cout << "This is class B\n";
         }
-        catch (const std::bad_cast& e) {
+        catch (std::exception& e)
+		{
             try
             {
                 C& c = dynamic_cast<C&>(p);
                 (void)c;
                 std::cout << "This is class C\n";
             }
-            catch (const std::bad_cast& e)
+            catch (std::exception& e)
             {
                 std::cout << "oupsi\n";
             }

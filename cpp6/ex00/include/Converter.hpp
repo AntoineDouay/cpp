@@ -4,8 +4,8 @@
 #define CONVERTER_HPP
 
 #include <iostream>
-#include <limits.h>
-
+#include <cstdlib>
+#include <limits>
 
 typedef	enum	type{
 	CHAR,
@@ -53,9 +53,9 @@ class ScalarConverter{
     std::string		_param;
 	double long		_value;
 	char			_char;
-    // int             _int;
-    // float			_float;
-    // double 			_double;
+    int             _int;
+    float			_float;
+    double 			_double;
 };
 
 #endif
