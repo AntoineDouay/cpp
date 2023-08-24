@@ -18,6 +18,7 @@ class Array{
         _array = new T[n];
         for (unsigned int i = 0; i < n; i++)
             i++;
+        _n = n;
         std::cout << "param constructor called\n";
     }
     Array(const Array & copy){
