@@ -56,6 +56,7 @@ bool ScalarConverter::isChar(std::string param)
 bool ScalarConverter::isInt(std::string param)
 {
 	int i = 0;
+
     if (param[0] == '-' || param[0] == '+')
 	{
         i++;
@@ -72,6 +73,8 @@ bool    ScalarConverter::isFloat(std::string param)
 {
     unsigned int i = 0;
     bool point = false;
+	if (_type == CHAR)
+		return false;
     if (param[0] == '-' || param[0] == '+')
 	{
         i++;
@@ -86,17 +89,19 @@ bool    ScalarConverter::isFloat(std::string param)
                 break ;
         }
 	}
-    if (param[i] == 'f' && param.size() == i + 1)
+    if (param[i] == 'f' && param.size() == i + 1 && point && param[i - 1] && param[i - 1] != '.')
 	{
         return true;   
 	}
 	return false;
-}
+} // std::streamistring does the job better & easier
 
 bool    ScalarConverter::isDouble(std::string param)
 {
     int i = 0;
     bool point = false;
+	if (_type == CHAR)
+		return false;
     if (param[0] == '-' || param[0] == '+')
 	{
         i++;
@@ -182,9 +187,9 @@ void    ScalarConverter::printDouble()
     std::cout << "double: ";
     if (_type == INF)
     {
-        if( (_param.compare("+inff") || _param.compare("-inff")))
+        if( (not _param.compare("+inff") || not _param.compare("-inff")))
             std::cout << _param.substr(0,4) << std::endl;
-        else if ( not _param.compare("nanf"))
+        else if (not _param.compare("nanf"))
             std::cout << _param.substr(0,3) << std::endl;
         else
             std::cout << _param << std::endl;
@@ -232,9 +237,9 @@ void    ScalarConverter::convert(std::string param)
 	if(_type == INT)
 		_int = atoi(_param.c_str());
 	else if(_type == FLOAT)
-		_int = atof(_param.c_str());
+		_float = atof(_param.c_str());
 	else if(_type == DOUBLE)
-		_int = atof(_param.c_str());
+		_double = atof(_param.c_str());
     else if(_type == ERROR)
     {
         std::cout << "invalid param \n";

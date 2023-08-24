@@ -3,7 +3,6 @@
 
 int main()
 {
-
     Base *c1 = generate();
 
     identify(c1);
