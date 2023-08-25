@@ -10,18 +10,19 @@ class Array{
     public :
 
     Array(){
-        _array = NULL;
+        _array = new T[0];
         _n = 0;
         std::cout << "default constructor called\n";
     }
     Array(unsigned int n){
         _array = new T[n];
-        for (unsigned int i = 0; i < n; i++)
-            i++;
+        // for (unsigned int i = 0; i < n; i++)
+        //     i++;
         _n = n;
         std::cout << "param constructor called\n";
     }
-    Array(const Array & copy){
+    Array(Array & copy){
+		_array = NULL;
         *this = copy;
     }
     ~Array(){
@@ -29,13 +30,13 @@ class Array{
         std::cout << "default destructor called\n";
     }
 
-    Array&  operator=(const Array & src){
+    Array&  operator=(Array & src){
         if (_array)
             delete _array;
         _array = new T[src.size()];
         _n = src.size();
         for(int i = 0; i < _n; i++)
-            _array[i] = *src._array[i];
+            _array[i] = src._array[i];
         return (*this);
     }
 
