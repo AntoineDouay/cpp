@@ -11,7 +11,7 @@ int main()
     intVector.push_back(3);
     intVector.push_back(4);
  
-    it = easyfind(intVector, 2);
+    it = easyfind(intVector, 5);
     if (it != intVector.end())
         std::cout << *it << " was found \n";
     else
