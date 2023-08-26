@@ -1,8 +1,10 @@
 
 #include "../include/Span.hpp"
 
-Span::Span(unsigned int n) : _n(n)
+Span::Span(unsigned int n) : _max(n), _fill(n)
 {
+	std::vector<int> tmp(n, 0);
+	_stock = tmp;
 }
 
 Span::Span(const Span & copy)
@@ -13,7 +15,8 @@ Span::Span(const Span & copy)
 Span&	Span::operator=(const Span & src)
 {
 	_stock = src._stock;
-	_n = src._n;
+	_max = src._max;
+	_fill = src._fill;
 	return *this;
 }
 
@@ -21,10 +24,22 @@ Span::~Span()
 {
 }
 
+
+void	Span::randomFill()
+{
+	srand((unsigned) time(NULL));
+	std::vector<int>::iterator it = _stock.begin();
+	std::vector<int>::iterator ite = _stock.end();
+	for (; it != ite; it++)
+		*it = (rand() % 100);
+}
+
 void	Span::addNumber(int n)
 {
-	if (_stock.size() < static_cast<unsigned long>(_n))
-		_stock.push_back(n);
+	if (_fill == 0)
+		throw FullArrayException();
+	_stock[_max - _fill] = n;
+	_fill--;
 }
 
 int		Span::shortestSpan()
@@ -35,12 +50,12 @@ int		Span::shortestSpan()
 		throw OneArrayException();
 	std::vector<int> tmp = _stock;
 	std::sort(tmp.begin(), tmp.end());
-	long double span = std::numeric_limits<long double>::max();
+	long double span = tmp[1] - tmp[0];
 
 	for (std::vector<int>::iterator it = tmp.begin(); it < (tmp.end() - 1); it++)
 	{
 		long double diff = abs(*(it+1) - *it);
-		if (span > diff)
+		if (diff < span)
 			span = diff;
 	}
 
@@ -49,6 +64,10 @@ int		Span::shortestSpan()
 
 int		Span::longestSpan()
 {
+	if (_stock.size() == 0)
+		throw EmptyArrayException();
+	if (_stock.size() == 1)
+		throw OneArrayException();
 	std::vector<int>::iterator min = min_element(_stock.begin(), _stock.end());
 	std::vector<int>::iterator max = max_element(_stock.begin(), _stock.end());
 

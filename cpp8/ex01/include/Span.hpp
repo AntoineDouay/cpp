@@ -7,6 +7,9 @@
 #include <algorithm>
 #include <vector>
 #include <limits>
+#include <stdlib.h>
+#include<time.h>
+
 
 class Span{
 
@@ -18,6 +21,7 @@ class Span{
 
 	Span& operator=(const Span & src);
 
+	void	randomFill();
 	void	addNumber(int n);
 	int		shortestSpan();
 	int		longestSpan();	
@@ -32,12 +36,17 @@ class Span{
 		virtual const char* what() const throw() {return "One Array";}
 	};
 
+	class FullArrayException : public std::exception{
+		virtual const char* what() const throw() {return "Array is full";}
+	};
+
 	private :
 
 	Span();
 
 	std::vector<int> _stock;
-	int				 _n;
+	int				 _max;
+	int				 _fill;
 };
 
 #endif
