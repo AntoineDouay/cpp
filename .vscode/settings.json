@@ -74,6 +74,7 @@
 		"random": "cpp",
 		"utility": "cpp",
 		"ranges": "cpp",
-		"span": "cpp"
+		"span": "cpp",
+		"list": "cpp"
 	}
 }

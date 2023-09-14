@@ -5,6 +5,8 @@
 #include <iostream>
 #include <sstream>
 #include <stack>
+#include <stdlib.h>
+
 
 class RPN {
 
@@ -22,8 +24,7 @@ class RPN {
 	
 	RPN();
 
-	std::istringstream 		_iss;
-	std::stack<int>			_stack;
+	std::string	_str;
 };
 
 #endif
