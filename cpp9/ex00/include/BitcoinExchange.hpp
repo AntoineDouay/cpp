@@ -6,8 +6,14 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <exception>
 #include <sstream>
 #include <cstdlib>
+
+#define GREEN "\033[32m"
+#define RED "\033[31m"
+#define WHITE "\033[0m"
+
 
 class BitcoinExchange{
 
@@ -27,6 +33,16 @@ class BitcoinExchange{
 	typedef std::map<std::string, float>::iterator map_iterator;
 
 	map_iterator	right_key(std::string date);
+
+	class ExchangeError{
+		public :
+		ExchangeError(const std::string & message) : _message(message) {};
+
+		const char* what() const throw() {return _message.c_str();}
+
+		private :
+		std::string _message;
+	};
 
 	private :
 

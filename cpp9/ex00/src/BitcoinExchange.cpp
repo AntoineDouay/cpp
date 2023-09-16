@@ -15,7 +15,7 @@ BitcoinExchange::map_iterator	BitcoinExchange::right_key(std::string date)
 {
 	map_iterator it =_data.find(date);
 
-	if (it == _data.end())
+	if (it != _data.end())
 		return (it);
 	
 	it = _data.lower_bound(date);
@@ -31,37 +31,37 @@ void	BitcoinExchange::exchange()
 	std::string		value;
 
 	if (!file.is_open())
-		return;
+		throw ExchangeError("Error : could not open file");
+
 	getline(file, buffer);
+
 	if (buffer.compare("date | value"))
-		return ;
+		throw ExchangeError("Error : need [date | value] on first line");
 	
 	while (getline(file, buffer))
 	{
-		date.assign(buffer, 0, 10);
-		if (!parse_date(date))
-		{
-			std::cout << "date error from exchange\n";
-			return ;
+		try {
+			date.assign(buffer, 0, 10);
+			if (!parse_date(date))
+					throw ExchangeError("Error: bad input => " + date);
+			value = buffer.assign(buffer.begin() + 10, buffer.end());
+			if (value.compare(0, 3, " | "))
+				throw	ExchangeError("Format Error");
+			value.erase(0,3);
+			map_iterator it = right_key(date);
+			double f_value = atof(value.c_str());
+			if (f_value < 0 )
+				throw	ExchangeError("Error: not a positive number.");
+			if (f_value > 1000)
+				throw	ExchangeError("Error: too large a number.");
+			if (it == _data.end())
+				throw	ExchangeError("Error: bad input => " + date);
+			std::cout << it->first << " => " << f_value << " = " << GREEN << it->second * f_value  << WHITE << std::endl;
 		}
-		value = date.assign(buffer.begin() + 10, buffer.end());
-
-		if (value.compare(0, 3, " | "))
+		catch( ExchangeError & e)
 		{
-			std::cout << "error format need | \n";
-			return ;
+			std::cout << e.what() << std::endl;
 		}
-		value.erase(0,3);
-		map_iterator it = right_key(date);
-		double f_value = atof(value.c_str());
-		if (f_value < 0)
-			return ;
-		if (f_value > 1000)
-			return ;
-		// std::cout << "cc\n";			// it renvoie end au lieux de marcher
-		// if (it == _data.end())
-		// 	return ;
-		std::cout << "\033[32m" << it->second * f_value << "\033[32m" << std::endl;
 	}
 	file.close();
 }
@@ -69,16 +69,13 @@ void	BitcoinExchange::exchange()
 bool	BitcoinExchange::parse_date(std::string date)
 {
 	if(date.size() != 10)
-	{
-		std::cout << "error\n";
 		return false;
-	}
 
 	if (atol(date.c_str()) < 2009 || atol(date.c_str()) > 2022) // year
 		return false;
-	if (atol(date.c_str() + 5) < 0 || atol(date.c_str() + 5) > 12) // month
+	if (atol(date.c_str() + 5) < 1 || atol(date.c_str() + 5) > 12) // month
 		return false;
-	if (atol(date.c_str() + 8) < 0 || atol(date.c_str() + 8) > 31) // day
+	if (atol(date.c_str() + 8) < 1 || atol(date.c_str() + 8) > 31) // day
 		return false;
 
 	for (unsigned long i = 0; i < date.size(); i++)
@@ -86,10 +83,7 @@ bool	BitcoinExchange::parse_date(std::string date)
 		if (!isdigit(date[i]))
 		{
 			if (!(date[i] == '-' && (i == 4 || i == 7)))
-			{
-				std::cout << "error\n";
 				return false;
-			}
 		}
 	}
 	return true;
@@ -120,7 +114,7 @@ void	BitcoinExchange::get_data()
 	std::ifstream	file("data.csv");
 
 	if (!file.is_open())
-		return;
+		throw ExchangeError("Error : could not open file");
 
 	std::string line;
 	std::string	date;
@@ -129,7 +123,7 @@ void	BitcoinExchange::get_data()
 	getline(file,line);
 
 	if (line.compare("date,exchange_rate"))
-		return;
+		throw ExchangeError("Error : need [date,exchange_rate] on first line");
 
 	while(getline(file, line))
 	{
@@ -137,10 +131,9 @@ void	BitcoinExchange::get_data()
 		value = line.substr(line.find(',') + 1, line.size());
 
 		if (!parse_date(date))
-			return;
+			throw ExchangeError("Error : date format need to be YYYY-MM-DD");
 		if (!parse_value(value))
-			return ;
-
+			throw ExchangeError("Error : of format in data.csv");
 
 		_data.insert(std::make_pair(date, std::atof(value.c_str())));
 	}
