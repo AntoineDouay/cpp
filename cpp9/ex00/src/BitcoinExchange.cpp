@@ -11,6 +11,28 @@ BitcoinExchange::BitcoinExchange(std::string input) : _input(input)
 	get_data();
 }
 
+BitcoinExchange::BitcoinExchange(BitcoinExchange & copy)
+{
+	*this = copy;
+}
+
+BitcoinExchange&	BitcoinExchange::operator=(BitcoinExchange & src)
+{
+	_data.clear();
+	_input = src._input;
+	std::map<std::string, float>::iterator it = src._data.begin();
+	std::string str;
+	float		f;
+	for (; it != src._data.end(); it++)
+	{
+		str = it->first;
+		f = it->second;
+		_data[str] = f;
+	}
+	return *this;
+}
+
+
 BitcoinExchange::map_iterator	BitcoinExchange::right_key(std::string date)
 {
 	map_iterator it =_data.find(date);

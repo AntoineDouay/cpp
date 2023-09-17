@@ -20,10 +20,10 @@ class BitcoinExchange{
 	public :
 
 	BitcoinExchange(std::string input);
-	BitcoinExchange(const BitcoinExchange & copy);
+	BitcoinExchange(BitcoinExchange & copy);
 	~BitcoinExchange();
 
-	BitcoinExchange&	operator=(const BitcoinExchange & src);
+	BitcoinExchange&	operator=(BitcoinExchange & src);
 
 	void	get_data();
 	void	exchange();

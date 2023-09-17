@@ -35,11 +35,6 @@ void	RPN::solve()
 			_stack.push(atoi(token.c_str()));
 		else
 		{
-			if(token.size() != 1)
-			{
-				std::cout << "error : unknow character \n";
-				return;
-			}
 			if (_stack.size() < 2)
 			{
 				std::cout << "error : impossible to calculate\n";
