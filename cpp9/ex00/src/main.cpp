@@ -1,9 +1,15 @@
 
 #include "../include/BitcoinExchange.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
-	BitcoinExchange oui("test.txt");
+	if (argc != 2)
+	{
+		std::cout << "Error : could not open the file.\n";
+		return 1;
+	}
+
+	BitcoinExchange oui(argv[1]);
 	try{
 		oui.exchange();
 	}
